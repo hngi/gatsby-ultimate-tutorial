@@ -2,13 +2,11 @@ import React from "react";
 import { StoryblokComponent, storyblokEditable } from "gatsby-source-storyblok";
 
 const Grid = ({ blok }) => (
-  <ul {...storyblokEditable(blok)} key={blok._uid}>
-    {blok.columns.map((blok) => (
-      <li key={blok._uid}>
-        <StoryblokComponent blok={blok} />
-      </li>
+  <div className="grid grid-cols-3" {...storyblokEditable(blok)}>
+    {blok.columns.map((nestedBlok) => (
+      <StoryblokComponent blok={nestedBlok} key={nestedBlok._uid} />
     ))}
-  </ul>
+  </div>
 );
 
 export default Grid;

@@ -5,7 +5,7 @@ import { StoryblokComponent, storyblokEditable, useStoryblokState } from "gatsby
 
 import Layout from "../components/layout"
 
-const IndexPage = ({ data }) => {
+export default function Home({ data }) {
   let story = data.storyblokEntry
   story = useStoryblokState(story)
 
@@ -14,14 +14,11 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div {...storyblokEditable(story.content)}>
-        <h1>{story.name}</h1>
         {components}
       </div>
     </Layout>
   )
 }
-
-export default IndexPage
 
 export const query = graphql`
   query HomeQuery {
